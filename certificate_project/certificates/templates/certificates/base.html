@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Site</title>
+    <link rel="icon" href="{% static 'favicon.ico' %}">
+
+</head>
+<body>
+    <nav>
+        <ul><li><a href="{% url 'create_certificate' %}">Create Certificate</a></li>
+            <li><a href="{% url 'verify_certificate' %}">Verify Certificate</a></li>
+            <li><a href="{% url 'customize_certificate' %}">Customize Certificate</a></li>
+  
+            <!-- Your navigation links here -->
+        </ul>
+    </nav>
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

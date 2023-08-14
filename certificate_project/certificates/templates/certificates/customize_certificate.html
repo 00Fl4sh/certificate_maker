@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customize Certificate</title>
+</head>
+<body>
+    <h1>Customize Certificate</h1>
+    <form method="POST" action="{% url 'customize_certificate' %}">
+        {% csrf_token %}
+        <label for="font">Font:</label>
+        <select id="font" name="font">
+            <option value="font1">Font 1</option>
+            <option value="font2">Font 2</option>
+            <!-- Add more font options here -->
+        </select><br>
+        <label for="color">Color:</label>
+        <input type="color" id="color" name="color"><br>
+        <label for="layout">Layout:</label>
+        <select id="layout" name="layout">
+            <option value="layout1">Layout 1</option>
+            <option value="layout2">Layout 2</option>
+            <!-- Add more layout options here -->
+        </select><br>
+        <button type="submit">Apply Customization</button>
+    </form>
+</body>
+</html>

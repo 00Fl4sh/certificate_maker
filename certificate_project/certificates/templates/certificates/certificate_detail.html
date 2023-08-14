@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Certificate Design</title>
+    <style>
+        body {
+            font-family: "Arial", sans-serif;
+        }
+        .certificate {
+            width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+        .certificate-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .certificate-content {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .recipient {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .issue-date {
+            font-size: 18px;
+            color: #666;
+        }
+        .signature {
+            margin-top: 40px;
+        }
+        .signature img {
+            width: 150px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+{% block content %}
+
+    <div class="certificate">
+        <div class="certificate-title">{{ certificate.title }}</div>
+        <div class="certificate-content">This is to certify that</div>
+        <div class="recipient">{{ certificate.recipient_name }}</div>
+        <div class="certificate-content">has successfully completed the course in</div>
+        <div class="course">{{certificate.course}}</div>
+        <div class="issue-date">Issued on:{{ certificate.issue_date }}</div>
+        <div class="signature">
+            <img src="signature.png" alt="Signature">
+        </div>
+    </div>
+    {% endblock %}
+
+    <script>
+    </script>
+</body>
+    <a href="{% url 'download_certificate' certificate_id=certificate.pk %}" class="btn btn-primary">Download Certificate</a>
+    <p><a href="{% url 'home' %}">Back to Home</a></p>
+</body>
+</html>
+

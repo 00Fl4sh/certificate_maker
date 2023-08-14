@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Verification Result</title>
+</head>
+<body>
+    {% if success_message %}
+        <p>{{ success_message }}</p>
+        {% comment %} <p>Certificate ID:{{verification_code }}</p> {% endcomment %}
+    {% else %}
+        <p>Verification failed. Certificate not found or invalid token.</p>
+    {% endif %}
+</body>
+</html>

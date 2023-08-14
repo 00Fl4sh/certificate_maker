@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+    <style>
+      body {
+    font-family: "Arial", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background-color: grey;
+    padding: 10px 0;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+li {
+    margin: 0 20px;
+}
+
+ li a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+.content {
+    text-align: center;
+    margin-top: 30px;
+}
+
+h1 {
+    font-size: 28px;
+    color: #333;
+}
+
+@media (max-width: 768px) {
+    ul {
+        flex-direction: column;
+    }
+
+    li {
+        margin: 10px 0;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'create_certificate' %}">Create Certificate</a></li>
+            <li><a href="{% url 'verify_certificate' %}">Verify Certificate</a></li>
+            <li><a href="{% url 'customize_certificate' %}">Customize Certificate</a></li>
+            <!-- Link to view a certificate -->
+            {% for certificate in recent_certificates %}
+            <li>
+                <a href="{% url 'certificate_detail' certificate_id=certificate.pk %}">
+                    {{ certificate.title }} - {{ certificate.issue_date }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </nav>
+    <div class="content">
+        <h1>Welcome to Certificate Management System</h1>
+        <h2>Most Recent Certificate</h2>
+        {% if most_recent_certificate %}
+        <div>
+            <strong>Title:</strong> {{ most_recent_certificate.title }}<br>
+            <strong>Recipient:</strong> {{ most_recent_certificate.recipient_name }}<br>
+            <strong>Recipient:</strong> {{ most_recent_certificate.course }}<br>
+            <strong>Issue Date:</strong> {{ most_recent_certificate.issue_date }}<br>
+            <!-- Display other certificate details as needed -->
+        </div>
+        {% else %}
+        <p>No certificates available.</p>
+        {% endif %}
+    </div>
+    
+    <div class="content">
+        <h1>Welcome to Certificate Management System</h1>
+        <!-- Your other content here -->
+    </div>
+</body>
+</html>

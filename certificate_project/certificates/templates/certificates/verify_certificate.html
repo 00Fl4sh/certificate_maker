@@ -1,0 +1,7 @@
+<form method="POST" action="{% url 'verify_certificate' %}">
+    {% csrf_token %}
+    <input type="hidden" name="certificate_id" value="{{ certificate.pk }}">
+    <label for="verification_token">Verification Token:</label>
+    <input type="text" id="verification_token" name="verification_token" required>
+    <button type="submit">Verify Certificate</button>
+</form>
